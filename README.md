@@ -1,54 +1,151 @@
 # SalesInsight — Sales Data Analytics
 
-SalesInsight adalah aplikasi analisis data penjualan historis berbasis web yang dikembangkan menggunakan Laravel 12, Blade, Tailwind CSS v4, dan Chart.js. Aplikasi ini berfokus pada visualisasi performa produk, analisis tren bulanan, dan pengolahan data unit terjual dari file CSV.
+SalesInsight is a web-based sales analytics application designed to help users analyze historical sales data, monitor product performance, and understand monthly sales trends.
 
-## 🛠️ Teknologi & Stack
+The application provides interactive visualizations, sales performance metrics, and CSV data import functionality to make historical sales data easier to explore.
 
-- **Backend Framework:** Laravel 12 (PHP 8.2+)
-- **Frontend:** Laravel Blade & Tailwind CSS v4
-- **Visualisasi Grafik:** Chart.js 4.5.1
+## Features
+
+- **Dashboard** — View key sales metrics, monthly sales trends, top-selling products, and sales insights.
+- **Product Analysis** — Compare product performance, identify the highest and lowest performers, and review product trend statuses.
+- **Sales Trends** — Analyze monthly sales movements, month-over-month (MoM) changes, and historical sales patterns.
+- **CSV Data Import** — Upload sales data using CSV files, download a sample template, validate records, and review row-level import errors.
+
+## Screenshots
+
+### Dashboard
+
+![SalesInsight Dashboard](screenshots/01-dashboard.png)
+
+### Product Analysis
+
+![SalesInsight Product Analysis](screenshots/02-products.png)
+
+### Sales Trends
+
+![SalesInsight Sales Trends](screenshots/03-trends.png)
+
+### CSV Data Import
+
+![SalesInsight CSV Import](screenshots/04-import.png)
+
+## Tech Stack
+
+- **Backend:** PHP 8.2+, Laravel 12
+- **Frontend:** Laravel Blade, Tailwind CSS v4
+- **Charts:** Chart.js 4.5.1
 - **Database:** SQLite
 - **Build Tool:** Vite
 
-## 📊 Fitur Utama
+## System Architecture
 
-1. **Ringkasan Dasbor (`/`)**
-   - KPI Utama: Total Unit Terjual, Rata-rata Bulanan, Produk Terlaris, dan Bulan Penjualan Tertinggi.
-   - Grafik Tren Penjualan Bulanan (Line Chart).
-   - Grafik Top 5 Produk Terlaris & Penjualan Terendah (Horizontal Bar Chart).
-   - Ringkasan Insight otomatis berdasarkan data historis.
+SalesInsight uses Laravel's server-rendered architecture with the following request flow:
 
-2. **Analisis Performa Produk (`/products`)**
-   - Sorotan produk: Produk Tertinggi, Terendah, Pertumbuhan Terkuat, dan Penurunan Terkuat.
-   - Grafik perbandingan seluruh produk secara visual.
-   - Tabel performa produk lengkap dengan status tren (*Meningkat*, *Stabil*, *Menurun*).
+`Route → Controller → Service → Blade View`
 
-3. **Analisis Tren Penjualan (`/trends`)**
-   - Kartu statistik tren dan perubahan MoM (*Month-over-Month*).
-   - Grafik garis perkembangan unit terjual dari waktu ke waktu.
-   - Tabel histori bulanan interaktif dengan indikator perubahan persentase MoM.
+The main services include:
 
-4. **Impor Data CSV (`/import`)**
-   - Pengunggahan file CSV dengan antarmuka *drag-and-drop*.
-   - Fitur unduh templat CSV contoh.
-   - Validasi file, format tanggal (`YYYY-MM-DD`), dan jumlah unit positif.
-   - Pembuatan produk baru secara otomatis (*auto-creation*) jika nama produk belum ada di database.
-   - Laporan kesalahan berbasis baris dalam Bahasa Indonesia.
+- `SalesMetricsService` — Calculates key performance indicators and sales totals.
+- `ProductPerformanceService` — Analyzes product performance, rankings, and trend statuses.
+- `TrendAnalysisService` — Calculates month-over-month changes and monthly sales statistics.
+- `SalesImportService` — Handles CSV parsing, row validation, and database transactions during data import.
 
-## 📐 Arsitektur Sistem
+## Project Structure
 
-Aplikasi menggunakan pola alur server-rendered bawaan Laravel:
-`Route` → `Controller` → `Service Engine` → `Blade View`
+```text
+sales-insight/
+├── app/
+│   ├── Http/
+│   │   ├── Controllers/
+│   │   └── ...
+│   └── Services/
+├── bootstrap/
+├── config/
+├── database/
+├── public/
+├── resources/
+│   ├── css/
+│   ├── js/
+│   └── views/
+├── routes/
+├── screenshots/
+│   ├── 01-dashboard.png
+│   ├── 02-products.png
+│   ├── 03-trends.png
+│   └── 04-import.png
+├── tests/
+├── .env.example
+├── artisan
+├── composer.json
+├── package.json
+└── vite.config.js
+```
 
-### Services Utama:
-- `SalesMetricsService`: Menghitung KPI dasar dan agregasi unit.
-- `ProductPerformanceService`: Menghitung performa produk, pemeringkatan, dan status tren.
-- `TrendAnalysisService`: Menghitung persentase perubahan MoM dan statistik histori bulanan.
-- `SalesImportService`: Menangani parsing, validasi per baris, dan transaksi database saat impor CSV.
+## Requirements
 
-## 🚀 Instalasi & Cara Menjalankan
+- PHP 8.2 or newer
+- Composer
+- Node.js and npm
+- SQLite with the required PHP extensions
 
-1. **Clone repository:**
+## Installation and Setup
+
+1. Clone the repository:
+
    ```bash
-   git clone [https://github.com/amrullah-dev/sales-insight.git](https://github.com/amrullah-dev/sales-insight.git)
+   git clone https://github.com/amrullah-dev/sales-insight.git
    cd sales-insight
+   ```
+
+2. Install PHP dependencies:
+
+   ```bash
+   composer install
+   ```
+
+3. Create your environment file:
+
+   ```bash
+   copy .env.example .env
+   ```
+
+   Configure the environment and database settings in `.env` according to your local setup.
+
+4. Generate the application key:
+
+   ```bash
+   php artisan key:generate
+   ```
+
+5. Create the SQLite database file if it does not exist, then run migrations:
+
+   ```bash
+   php artisan migrate
+   ```
+
+6. Install frontend dependencies and build assets:
+
+   ```bash
+   npm install
+   npm run build
+   ```
+
+7. Start the Laravel development server:
+
+   ```bash
+   php artisan serve
+   ```
+
+8. Open the local URL displayed in your terminal.
+
+## Development
+
+To run the Vite development server while working on the frontend:
+
+```bash
+npm run dev
+```
+
+## Repository
+
+GitHub: https://github.com/amrullah-dev/sales-insight
