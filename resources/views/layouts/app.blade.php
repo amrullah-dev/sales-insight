@@ -88,6 +88,7 @@
                     Analisis Produk
                 </a>
 
+
                 {{-- Tren Penjualan --}}
                 <a href="{{ route('trends.index') }}"
                    class="group flex items-center px-3 py-2 text-[13px] font-medium rounded-lg transition-all duration-150
@@ -98,6 +99,23 @@
                         <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18 9 11.25l4.306 4.306a11.95 11.95 0 0 1 5.814-5.518l2.74-1.22m0 0-5.94-2.281m5.94 2.28-2.28 5.941" />
                     </svg>
                     Tren Penjualan
+                </a>
+
+                {{-- Data Section --}}
+                <p class="px-3 pt-4 pb-3 text-[11px] font-semibold text-slate-400 uppercase tracking-wider">
+                    Data
+                </p>
+
+                {{-- Impor Data --}}
+                <a href="{{ route('import.show') }}"
+                   class="group flex items-center px-3 py-2 text-[13px] font-medium rounded-lg transition-all duration-150
+                          {{ request()->routeIs('import.*')
+                              ? 'bg-indigo-50/80 text-indigo-700 font-semibold'
+                              : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900' }}">
+                    <svg class="mr-3 h-[18px] w-[18px] shrink-0 {{ request()->routeIs('import.*') ? 'text-indigo-600' : 'text-slate-400 group-hover:text-slate-500' }}" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 16.5V9.75m0 0-3 3m3-3 3 3M6.75 19.5a4.5 4.5 0 0 1-1.41-8.775 5.25 5.25 0 0 1 10.233-2.33 3 3 0 0 1 3.758 3.848A3.752 3.752 0 0 1 18 19.5H6.75Z" />
+                    </svg>
+                    Impor Data
                 </a>
             </nav>
 
