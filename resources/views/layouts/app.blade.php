@@ -13,7 +13,7 @@
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="h-full bg-[#F8FAFC] text-slate-900">
+<body class="h-full bg-[#FDFBF7] text-stone-800 antialiased min-h-screen">
     <div class="min-h-full flex flex-col md:flex-row">
 
         {{-- ─── Mobile Header ─── --}}
@@ -39,7 +39,7 @@
 
         {{-- ─── Sidebar ─── --}}
         <aside id="sidebar-menu"
-               class="hidden md:flex flex-col w-full md:w-60 bg-white border-r border-slate-200/80 shrink-0 md:sticky md:top-0 md:h-screen md:overflow-y-auto z-20">
+               class="hidden md:flex flex-col w-full md:w-60 bg-stone-100/70 border-r border-stone-200/80 shrink-0 md:sticky md:top-0 md:h-screen md:overflow-y-auto z-20">
 
             {{-- Brand --}}
             <div class="px-5 py-5 hidden md:block">
@@ -56,11 +56,11 @@
                 </div>
             </div>
 
-            <div class="h-px bg-slate-100 mx-5 hidden md:block"></div>
+            <div class="h-px bg-stone-200 mx-5 hidden md:block"></div>
 
             {{-- Navigation --}}
             <nav class="flex-1 px-3 py-4 space-y-0.5" aria-label="Menu utama">
-                <p class="px-3 pt-2 pb-3 text-[11px] font-semibold text-slate-400 uppercase tracking-wider">
+                <p class="px-3 pt-2 pb-3 text-[11px] font-semibold text-stone-500 uppercase tracking-wider">
                     Analisis
                 </p>
 
@@ -68,9 +68,9 @@
                 <a href="{{ route('dashboard') }}"
                    class="group flex items-center px-3 py-2 text-[13px] font-medium rounded-lg transition-all duration-150
                           {{ request()->routeIs('dashboard')
-                              ? 'bg-indigo-50/80 text-indigo-700 font-semibold'
-                              : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900' }}">
-                    <svg class="mr-3 h-[18px] w-[18px] shrink-0 {{ request()->routeIs('dashboard') ? 'text-indigo-600' : 'text-slate-400 group-hover:text-slate-500' }}" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor">
+                              ? 'bg-stone-200/80 text-stone-900 font-semibold'
+                              : 'text-stone-700 hover:bg-stone-100 hover:text-stone-900' }}">
+                    <svg class="mr-3 h-[18px] w-[18px] shrink-0 {{ request()->routeIs('dashboard') ? 'text-amber-700' : 'text-stone-500 group-hover:text-stone-600' }}" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 0 1 6 3.75h2.25A2.25 2.25 0 0 1 10.5 6v2.25a2.25 2.25 0 0 1-2.25 2.25H6a2.25 2.25 0 0 1-2.25-2.25V6ZM3.75 15.75A2.25 2.25 0 0 1 6 13.5h2.25a2.25 2.25 0 0 1 2.25 2.25V18a2.25 2.25 0 0 1-2.25 2.25H6A2.25 2.25 0 0 1 3.75 18v-2.25ZM13.5 6a2.25 2.25 0 0 1 2.25-2.25H18A2.25 2.25 0 0 1 20.25 6v2.25A2.25 2.25 0 0 1 18 10.5h-2.25a2.25 2.25 0 0 1-2.25-2.25V6ZM13.5 15.75a2.25 2.25 0 0 1 2.25-2.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-2.25A2.25 2.25 0 0 1 13.5 18v-2.25Z" />
                     </svg>
                     Dasbor
@@ -80,9 +80,9 @@
                 <a href="{{ route('products.index') }}"
                    class="group flex items-center px-3 py-2 text-[13px] font-medium rounded-lg transition-all duration-150
                           {{ request()->routeIs('products.*')
-                              ? 'bg-indigo-50/80 text-indigo-700 font-semibold'
-                              : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900' }}">
-                    <svg class="mr-3 h-[18px] w-[18px] shrink-0 {{ request()->routeIs('products.*') ? 'text-indigo-600' : 'text-slate-400 group-hover:text-slate-500' }}" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor">
+                              ? 'bg-stone-200/80 text-stone-900 font-semibold'
+                              : 'text-stone-700 hover:bg-stone-100 hover:text-stone-900' }}">
+                    <svg class="mr-3 h-[18px] w-[18px] shrink-0 {{ request()->routeIs('products.*') ? 'text-amber-700' : 'text-stone-500 group-hover:text-stone-600' }}" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" d="m20.25 7.5-.625 10.632a2.25 2.25 0 0 1-2.247 2.118H6.622a2.25 2.25 0 0 1-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125Z" />
                     </svg>
                     Analisis Produk
@@ -93,16 +93,16 @@
                 <a href="{{ route('trends.index') }}"
                    class="group flex items-center px-3 py-2 text-[13px] font-medium rounded-lg transition-all duration-150
                           {{ request()->routeIs('trends.*')
-                              ? 'bg-indigo-50/80 text-indigo-700 font-semibold'
-                              : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900' }}">
-                    <svg class="mr-3 h-[18px] w-[18px] shrink-0 {{ request()->routeIs('trends.*') ? 'text-indigo-600' : 'text-slate-400 group-hover:text-slate-500' }}" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor">
+                              ? 'bg-stone-200/80 text-stone-900 font-semibold'
+                              : 'text-stone-700 hover:bg-stone-100 hover:text-stone-900' }}">
+                    <svg class="mr-3 h-[18px] w-[18px] shrink-0 {{ request()->routeIs('trends.*') ? 'text-amber-700' : 'text-stone-500 group-hover:text-stone-600' }}" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18 9 11.25l4.306 4.306a11.95 11.95 0 0 1 5.814-5.518l2.74-1.22m0 0-5.94-2.281m5.94 2.28-2.28 5.941" />
                     </svg>
                     Tren Penjualan
                 </a>
 
                 {{-- Data Section --}}
-                <p class="px-3 pt-4 pb-3 text-[11px] font-semibold text-slate-400 uppercase tracking-wider">
+                <p class="px-3 pt-4 pb-3 text-[11px] font-semibold text-stone-500 uppercase tracking-wider">
                     Data
                 </p>
 
@@ -110,9 +110,9 @@
                 <a href="{{ route('import.show') }}"
                    class="group flex items-center px-3 py-2 text-[13px] font-medium rounded-lg transition-all duration-150
                           {{ request()->routeIs('import.*')
-                              ? 'bg-indigo-50/80 text-indigo-700 font-semibold'
-                              : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900' }}">
-                    <svg class="mr-3 h-[18px] w-[18px] shrink-0 {{ request()->routeIs('import.*') ? 'text-indigo-600' : 'text-slate-400 group-hover:text-slate-500' }}" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor">
+                              ? 'bg-stone-200/80 text-stone-900 font-semibold'
+                              : 'text-stone-700 hover:bg-stone-100 hover:text-stone-900' }}">
+                    <svg class="mr-3 h-[18px] w-[18px] shrink-0 {{ request()->routeIs('import.*') ? 'text-amber-700' : 'text-stone-500 group-hover:text-stone-600' }}" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M12 16.5V9.75m0 0-3 3m3-3 3 3M6.75 19.5a4.5 4.5 0 0 1-1.41-8.775 5.25 5.25 0 0 1 10.233-2.33 3 3 0 0 1 3.758 3.848A3.752 3.752 0 0 1 18 19.5H6.75Z" />
                     </svg>
                     Impor Data
